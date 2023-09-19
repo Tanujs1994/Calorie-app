@@ -21,7 +21,7 @@ class IntroPage extends StatelessWidget{
             padding: const EdgeInsets.all(8.0),
             child: Text('Log your food',
             style: TextStyle(fontSize: 34,
-            fontWeight: FontWeight.bold, fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,fontFamily: 'FontMain', 
             color: Colors.orangeAccent),
             ),
           ),
