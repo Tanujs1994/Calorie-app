@@ -5,6 +5,31 @@ class TanujSearchFood extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('Search food');
+    return  Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          const Text('Search Food', style: TextStyle(fontSize: 25, color: Colors.orangeAccent),),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
+            child: TextField(
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+              labelText: 'Search you food',labelStyle: const TextStyle(fontSize: 12),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(width: 3, color: Colors.orangeAccent),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              focusedBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(width: 3, color: Colors.orangeAccent),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+                  ),
+          ),
+        ],
+         
+      ),
+    );
   }
 }
