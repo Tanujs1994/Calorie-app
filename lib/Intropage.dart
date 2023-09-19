@@ -3,14 +3,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/foodcard.dart';
 import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/toptobottomGradient.dart';
 
 class IntroPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('MY Food')),
+        title: Center(child: Text('MY Calorie')),
         backgroundColor: Colors.white,
 
       ),
@@ -31,46 +33,10 @@ class IntroPage extends StatelessWidget{
             crossAxisSpacing: 12,
                   
             children: [
-              Card(
-                elevation: 25,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
-                child: Stack(children:[
-                  ClipRRect(borderRadius: BorderRadius.all(Radius.circular(30)),child: Image.asset('assets/images/breakfast.jpg')),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    child: Text('BREAKFAST',style: TextStyle(fontSize: 22,color: Colors.white),),
-                  ),
-                ] ),
-              ),
-
-              Card(
-                elevation: 25,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
-                child: Stack(children:[
-                  ClipRRect(borderRadius: BorderRadius.only(topLeft:Radius.circular(30), topRight: Radius.circular(30) ),child: Image.asset('assets/images/lunch.jpg')),
-                  Container(alignment: Alignment.bottomCenter,
-                  child: Text('LUNCH', style: TextStyle(fontSize: 22, color: Colors.white),))
-                ] ),
-              ),
-              Card(
-                elevation: 25,
-                child: Stack(children:[
-                  ClipRRect(borderRadius: BorderRadius.all(Radius.circular(30)),child: Image.asset('assets/images/teabreak.jpg')),
-                  Container(alignment: Alignment.bottomCenter,
-                  child: Text('TEABREAK',style: TextStyle(fontSize: 22, color: Colors.white)))
-                ] ),
-              ),
-              Card(
-                elevation: 25,
-                child: Stack(children:[
-                 ClipRRect(borderRadius: BorderRadius.all(Radius.circular(30)),child: Image.asset('assets/images/dinner.jpg')),
-                 Container(alignment: Alignment.bottomCenter, 
-                 child: Text('DINNER',style: TextStyle(fontSize: 22, color: Colors.white)))
-                ] 
-                ),
-              ),
-                
-                
+            Tanujfoodcard(imagePath:'assets/images/breakfast.jpg' , cardTitle:'BREAKFAST' ),
+            Tanujfoodcard(imagePath: 'assets/images/lunchh.jpg', cardTitle: 'LUNCH'),
+            Tanujfoodcard(imagePath: 'assets/images/teabreak.jpg', cardTitle: 'TEABREAK'),
+            Tanujfoodcard(imagePath: 'assets/images/dinner.jpg', cardTitle: 'DINNER'),                
             ],
             
             ),
