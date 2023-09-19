@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/dishlist.dart';
 
 class TanujSearchFood extends StatelessWidget {
   const TanujSearchFood({super.key});
@@ -27,6 +28,7 @@ class TanujSearchFood extends StatelessWidget {
             ),
                   ),
           ),
+          TanujDishItem(),
         ],
          
       ),
