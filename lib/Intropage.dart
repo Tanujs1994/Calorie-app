@@ -28,14 +28,14 @@ class IntroPage extends StatelessWidget{
           Expanded(
             child: GridView.count(crossAxisCount: 2,
             mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
+            crossAxisSpacing: 12,
                   
             children: [
               Card(
                 elevation: 25,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
                 child: Stack(children:[
-                  Image.asset('assets/images/breakfast.jpg'),
+                  ClipRRect(borderRadius: BorderRadius.all(Radius.circular(30)),child: Image.asset('assets/images/breakfast.jpg')),
                   Container(
                     alignment: Alignment.bottomCenter,
                     child: Text('BREAKFAST',style: TextStyle(fontSize: 22,color: Colors.white),),
@@ -45,9 +45,9 @@ class IntroPage extends StatelessWidget{
 
               Card(
                 elevation: 25,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
                 child: Stack(children:[
-                  Image.asset('assets/images/lunch.jpg'),
+                  ClipRRect(borderRadius: BorderRadius.only(topLeft:Radius.circular(30), topRight: Radius.circular(30) ),child: Image.asset('assets/images/lunch.jpg')),
                   Container(alignment: Alignment.bottomCenter,
                   child: Text('LUNCH', style: TextStyle(fontSize: 22, color: Colors.white),))
                 ] ),
@@ -55,7 +55,7 @@ class IntroPage extends StatelessWidget{
               Card(
                 elevation: 25,
                 child: Stack(children:[
-                  Image.asset('assets/images/teabreak.jpg'),
+                  ClipRRect(borderRadius: BorderRadius.all(Radius.circular(30)),child: Image.asset('assets/images/teabreak.jpg')),
                   Container(alignment: Alignment.bottomCenter,
                   child: Text('TEABREAK',style: TextStyle(fontSize: 22, color: Colors.white)))
                 ] ),
@@ -63,7 +63,7 @@ class IntroPage extends StatelessWidget{
               Card(
                 elevation: 25,
                 child: Stack(children:[
-                 Image.asset('assets/images/dinner.jpg'),
+                 ClipRRect(borderRadius: BorderRadius.all(Radius.circular(30)),child: Image.asset('assets/images/dinner.jpg')),
                  Container(alignment: Alignment.bottomCenter, 
                  child: Text('DINNER',style: TextStyle(fontSize: 22, color: Colors.white)))
                 ] 
