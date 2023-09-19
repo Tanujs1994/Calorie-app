@@ -27,19 +27,47 @@ class IntroPage extends StatelessWidget{
           ),
           Expanded(
             child: GridView.count(crossAxisCount: 2,
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
                   
             children: [
               Card(
-                child: Image.asset('assets/images/breakfast.jpg'),
+                elevation: 25,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+                child: Stack(children:[
+                  Image.asset('assets/images/breakfast.jpg'),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    child: Text('BREAKFAST',style: TextStyle(fontSize: 22,color: Colors.white),),
+                  ),
+                ] ),
+              ),
+
+              Card(
+                elevation: 25,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40))),
+                child: Stack(children:[
+                  Image.asset('assets/images/lunch.jpg'),
+                  Container(alignment: Alignment.bottomCenter,
+                  child: Text('LUNCH', style: TextStyle(fontSize: 22, color: Colors.white),))
+                ] ),
               ),
               Card(
-                child: Image.asset('assets/images/lunch.jpg',fit: BoxFit.cover),
+                elevation: 25,
+                child: Stack(children:[
+                  Image.asset('assets/images/teabreak.jpg'),
+                  Container(alignment: Alignment.bottomCenter,
+                  child: Text('TEABREAK',style: TextStyle(fontSize: 22, color: Colors.white)))
+                ] ),
               ),
               Card(
-                child: Image.asset('assets/images/teabreak.jpg'),
-              ),
-              Card(
-                child: Image.asset('assets/images/dinner.jpg'),
+                elevation: 25,
+                child: Stack(children:[
+                 Image.asset('assets/images/dinner.jpg'),
+                 Container(alignment: Alignment.bottomCenter, 
+                 child: Text('DINNER',style: TextStyle(fontSize: 22, color: Colors.white)))
+                ] 
+                ),
               ),
                 
                 
