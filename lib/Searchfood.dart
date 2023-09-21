@@ -38,6 +38,7 @@ class _TanujSearchFoodState extends State<TanujSearchFood> {
               ),
             ),
             onChanged: (val){
+              print('value is $val');
               setState(() {
                 filteredItems = availableDishes.where((element) => 
                   element.name.toLowerCase().contains(val.toLowerCase())
