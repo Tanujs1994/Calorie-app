@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/data/all_dish_list.dart';
 import 'package:flutter_application_1/dishlist.dart';
 
-class TanujSearchFood extends StatelessWidget {
+class TanujSearchFood extends StatefulWidget {
   const TanujSearchFood({super.key});
+
+  @override
+  State<TanujSearchFood> createState() => _TanujSearchFoodState();
+}
+
+class _TanujSearchFoodState extends State<TanujSearchFood> {
+
+  List<Dish> availableDishes = allDishes;
+  List<Dish> filteredItems = allDishes;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +37,16 @@ class TanujSearchFood extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
-                  ),
+            onChanged: (val){
+              setState(() {
+                filteredItems = availableDishes.where((element) => 
+                  element.name.toLowerCase().contains(val.toLowerCase())
+                ).toList();
+              });
+            },
+            ),
           ),
-          TanujDishList(),
+          TanujDishList(filteredItems: filteredItems,),
         ],
          
       ),
