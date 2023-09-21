@@ -23,8 +23,8 @@ List<Dish> allDishes = [
   Dish(name: "Biscuit", isVeg: true, url:'https://images.ricardocuisine.com/services/recipes/1074x1074_7480-1480344893.jpg'),
   Dish(name: "Khichdi", isVeg: true, url:'https://i.pinimg.com/originals/b3/09/2a/b3092aa933811e27aece5eaeafe8398c.jpg'),
   Dish(name: "Bringel", isVeg: true, url:'https://usercontent1.hubstatic.com/14210828_f1024.jpg'),
-  // Dish(name: "Aaloo", isVeg: true, url:''),
-  // Dish(name: "Rayta", isVeg: true, url:''),
+  Dish(name: "Butter Chicken", isVeg: false, url:'https://th.bing.com/th/id/OIP.EpczIsHXXsuvy_0ih6TcUQHaHa?pid=ImgDet&rs=1'),
+  Dish(name: "Kadhai Chicken ", isVeg: false, url:'https://i.ytimg.com/vi/L38szOcyGnU/maxresdefault.jpg'),
 
-];
+];  
 

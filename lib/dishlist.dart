@@ -17,7 +17,7 @@ class TanujDishList extends StatelessWidget {
         itemCount: filteredItems.length,
         itemBuilder: (context, index){
             return MyDishItemCard(imagePath: filteredItems[index].url,
-             cardTitle: filteredItems[index].name, isVeg: filteredItems[index].isVeg,
+             cardTitle: filteredItems[index].name, isVegeterian: filteredItems[index].isVeg,
              );
         },
       ),
