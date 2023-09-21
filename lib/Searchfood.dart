@@ -10,7 +10,8 @@ class TanujSearchFood extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          const Text('Search Food', style: TextStyle(fontSize: 25, color: Colors.orangeAccent),),
+          const Text('Search Food', style: TextStyle(fontSize: 34,
+            fontWeight: FontWeight.bold,color: Colors.orangeAccent),),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
             child: TextField(
@@ -28,7 +29,7 @@ class TanujSearchFood extends StatelessWidget {
             ),
                   ),
           ),
-          TanujDishItem(),
+          TanujDishList(),
         ],
          
       ),
