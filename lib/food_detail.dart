@@ -14,71 +14,49 @@ class FoodDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isVegeterian == true) {
-      return Scaffold(
-          appBar: AppBar(
-            title: Text(cardTitle),
-          ),
-          body: Column(
-            children: [
-              Hero(
-                tag: "background" + index.toString(),
-                child: Image.network(imagePath),
-              ),
-              Text(
-                cardTitle,
-                style: TextStyle(fontSize: 20),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(cardTitle),
+        ),
+        body: Column(
+          children: [
+            Hero(
+              tag: "background" + index.toString(),
+              child: Image.network(imagePath),
+            ),
+            Text(
+              cardTitle,
+              style: TextStyle(fontSize: 20),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (isVegeterian)
                   Container(
                     height: 10,
                     width: 10,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle, color: Colors.green),
-                  ),
-                  Text(
-                    ' VEG',
-                    style: TextStyle(color: Colors.green),
                   )
-                ],
-              )
-            ],
-          ));
-    } else {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(cardTitle),
-        ),
-        body: Column(children: [
-          Hero(
-            tag: "background" + index.toString(),
-            child: Image.network(imagePath),
-          ),
-          Text(
-            cardTitle,
-            style: TextStyle(fontSize: 20),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 10,
-                width: 10,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.red,
-                ),
-              ),
-              Text(
-                ' NONVEG',
-                style: TextStyle(color: Colors.red),
-              )
-            ],
-          ),
-        ]),
-      );
-    }
+                else 
+                  Container(
+                    height: 10,
+                    width: 10,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.red),
+                  ),
+                  if (isVegeterian)
+                Text(
+                  ' VEG',
+                  style: TextStyle(color: Colors.green),
+                )
+                else
+                Text(' NONVEG',style: TextStyle(color: Colors.red),)
+              ],
+            )
+          ],
+        ));
   }
 }
+
+
