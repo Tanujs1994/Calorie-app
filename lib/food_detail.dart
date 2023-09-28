@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FoodDetailPage extends StatelessWidget {
   final String imagePath;
@@ -18,45 +19,90 @@ class FoodDetailPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(cardTitle),
         ),
-        body: Column(
-          children: [
-            Hero(
-              tag: "background" + index.toString(),
-              child: Image.network(imagePath),
-            ),
-            Text(
-              cardTitle,
-              style: TextStyle(fontSize: 20),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (isVegeterian)
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.green),
-                  )
-                else 
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.red),
-                  ),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Hero(
+                tag: "background" + index.toString(),
+                child: Image.network(imagePath),
+              ),
+              Center(
+                child: Text(
+                  cardTitle,
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   if (isVegeterian)
-                Text(
-                  ' VEG',
-                  style: TextStyle(color: Colors.green),
-                )
-                else
-                Text(' NONVEG',style: TextStyle(color: Colors.red),)
-              ],
-            )
-          ],
+                    Container(
+                      height: 10,
+                      width: 10,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.green),
+                    )
+                  else
+                    Container(
+                      height: 10,
+                      width: 10,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle, color: Colors.red),
+                    ),
+                  if (isVegeterian)
+                    Text(
+                      ' VEG',
+                      style: TextStyle(color: Colors.green),
+                    )
+                  else
+                    Text(
+                      ' NONVEG',
+                      style: TextStyle(color: Colors.red),
+                    )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 10),
+                    labelText: 'gm',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 10),
+                    labelText: 'kcal',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40 , top: 10),
+                child: Container(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Submit'),
+                  ),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
-
-
