@@ -14,7 +14,7 @@ List<Dish> allDishes = [
   Dish(name: "Kadhai Paneer", isVeg: true, url: 'https://th.bing.com/th/id/R.bd3bebefc9c487be69288356c1f91bc3?rik=k7pLmnD0SZHj3w&riu=http%3a%2f%2f1.bp.blogspot.com%2f_GlkYxavu-Ts%2fStVnaw3GCJI%2fAAAAAAAAARM%2f2b3PenJbX7g%2fw1200-h630-p-k-no-nu%2fkadhai-paneer1.JPG&ehk=cV8BbwTCA5w3uoi3WVFzHWk5mUSSCKvYjyARLvPOPaA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1'),
   Dish(name: "Chole",     isVeg: true, url: 'https://cookeryshow.com/wp-content/uploads/2018/10/amritsari-chole-masala-authentic.jpg'),
   Dish(name: "Rajma", isVeg: true, url: 'https://thumbs.dreamstime.com/b/rajma-indian-dish-served-chawal-rice-33228378.jpg'),
-  Dish(name: "MIX Veg", isVeg: true, url: 'https://www.foodfusion.com/wp-content/uploads/2017/05/ID-R00268-A.jpg?v=1587767410'),
+  Dish(name: "Mix Veg", isVeg: true, url: 'https://www.foodfusion.com/wp-content/uploads/2017/05/ID-R00268-A.jpg?v=1587767410'),
   Dish(name: "Kadi pakodi", isVeg: true, url: 'https://www.vahrehvah.com/indianfood_org/wp-content/uploads/2011/01/Punjabi-kadi-pakodi.gif'),
   Dish(name: "Rayta", isVeg: true, url: 'https://www.mapsofindia.com/ci-moi-images/my-india/Mix-Veg-Raita-665x470.jpg'),
   Dish(name: "Plane Chawal", isVeg: true, url: 'https://mofano.com/wp-content/uploads/2023/04/Plain-Rice-Sada-Chawal.jpg'),

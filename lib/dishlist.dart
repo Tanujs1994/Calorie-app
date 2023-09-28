@@ -9,16 +9,21 @@ class TanujDishList extends StatelessWidget {
 
   const TanujDishList({super.key, required this.filteredItems});
 
-
   @override
   Widget build(BuildContext context) {
-    return  Expanded(
+    return Expanded(
       child: ListView.builder(
         itemCount: filteredItems.length,
-        itemBuilder: (context, index){
-            return MyDishItemCard(imagePath: filteredItems[index].url,
-             cardTitle: filteredItems[index].name, isVegeterian: filteredItems[index].isVeg,
-             );
+        itemBuilder: (context, index) {
+          return Hero(
+            tag: 'background' + index.toString(),
+            child: MyDishItemCard(
+              imagePath: filteredItems[index].url,
+              cardTitle: filteredItems[index].name,
+              isVegeterian: filteredItems[index].isVeg,
+              index: index,
+            ),
+          );
         },
       ),
     );

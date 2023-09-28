@@ -1,10 +1,84 @@
 import 'package:flutter/material.dart';
 
 class FoodDetailPage extends StatelessWidget {
-  const FoodDetailPage({super.key});
+  final String imagePath;
+  final String cardTitle;
+  final bool isVegeterian;
+  final int index;
+  FoodDetailPage(
+      {super.key,
+      required this.imagePath,
+      required this.cardTitle,
+      required this.isVegeterian,
+      required this.index});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    if (isVegeterian == true) {
+      return Scaffold(
+          appBar: AppBar(
+            title: Text(cardTitle),
+          ),
+          body: Column(
+            children: [
+              Hero(
+                tag: "background" + index.toString(),
+                child: Image.network(imagePath),
+              ),
+              Text(
+                cardTitle,
+                style: TextStyle(fontSize: 20),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 10,
+                    width: 10,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.green),
+                  ),
+                  Text(
+                    ' VEG',
+                    style: TextStyle(color: Colors.green),
+                  )
+                ],
+              )
+            ],
+          ));
+    } else {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(cardTitle),
+        ),
+        body: Column(children: [
+          Hero(
+            tag: "background" + index.toString(),
+            child: Image.network(imagePath),
+          ),
+          Text(
+            cardTitle,
+            style: TextStyle(fontSize: 20),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.red,
+                ),
+              ),
+              Text(
+                ' NONVEG',
+                style: TextStyle(color: Colors.red),
+              )
+            ],
+          ),
+        ]),
+      );
+    }
   }
 }
