@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-class FoodDetailPage extends StatelessWidget {
+class FoodDetailPage extends StatefulWidget {
   final String imagePath;
   final String cardTitle;
   final bool isVegeterian;
@@ -14,29 +13,36 @@ class FoodDetailPage extends StatelessWidget {
       required this.index});
 
   @override
+  State<FoodDetailPage> createState() => _FoodDetailPageState();
+}
+
+class _FoodDetailPageState extends State<FoodDetailPage> {
+  String valueChoosen = "BREAKFAST";
+  List<String> listItem = ["BREAKFAST", "LUNCH", "TEABREAK", "DINNER"];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(cardTitle),
+          title: Text(widget.cardTitle),
         ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Hero(
-                tag: "background" + index.toString(),
-                child: Image.network(imagePath),
+                tag: "background" + widget.index.toString(),
+                child: Image.network(widget.imagePath),
               ),
               Center(
                 child: Text(
-                  cardTitle,
+                  widget.cardTitle,
                   style: TextStyle(fontSize: 20),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (isVegeterian)
+                  if (widget.isVegeterian)
                     Container(
                       height: 10,
                       width: 10,
@@ -50,7 +56,7 @@ class FoodDetailPage extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: Colors.red),
                     ),
-                  if (isVegeterian)
+                  if (widget.isVegeterian)
                     Text(
                       ' VEG',
                       style: TextStyle(color: Colors.green),
@@ -92,11 +98,40 @@ class FoodDetailPage extends StatelessWidget {
                 height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 40, right: 40 , top: 10),
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey)
+                  ),
+                  
+                  child: DropdownButton<String>(
+                    value: valueChoosen,
+                    onChanged: (newValue) {
+                      setState(() {
+                        valueChoosen = newValue!;
+                      });
+                    },
+                    items: listItem.map((String e) {
+                      return DropdownMenuItem<String>(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(e),
+                        ),
+                        value: e,
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
                 child: Container(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      print('cardTitle ${widget.cardTitle}');
+                    },
                     child: Text('Submit'),
                   ),
                 ),
