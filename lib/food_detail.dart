@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 class FoodDetailPage extends StatefulWidget {
@@ -26,8 +28,8 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
   @override
   Widget build(BuildContext context) {
     var now = DateTime.now();
-    var formatter = DateFormat('dd-MMMM-yyyy-H:m:a');
-    String formattedDate = formatter.format(now);
+    var formatter = DateFormat('dd-MMMM-yyyy');
+    var formattedDate = formatter.format(now);
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.cardTitle),
@@ -148,6 +150,19 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                       print("$kcalEaten");
                       print('$gmEaten');
                       print('$valueChoosen');
+                      FirebaseFirestore.instance
+                          .collection('Meals')
+                          .doc(formattedDate)
+                          .collection('Logs')
+                          .doc(DateTime.now().microsecondsSinceEpoch.toString())
+                          .set({
+                        "Meal Name": widget.cardTitle,
+                        "Taken At": valueChoosen,
+                        "Time": formattedDate,
+                        "Calorie": kcalEaten,
+                        "Gram": gmEaten,
+                      });
+                      Fluttertoast.showToast(msg: "Data sucessfully added");
                     },
                     child: Text('Submit'),
                   ),
