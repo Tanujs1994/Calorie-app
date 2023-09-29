@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class FoodDetailPage extends StatefulWidget {
   final String imagePath;
@@ -19,8 +20,14 @@ class FoodDetailPage extends StatefulWidget {
 class _FoodDetailPageState extends State<FoodDetailPage> {
   String valueChoosen = "BREAKFAST";
   List<String> listItem = ["BREAKFAST", "LUNCH", "TEABREAK", "DINNER"];
+  var kcalEaten = 0;
+  var gmEaten = 0;
+
   @override
   Widget build(BuildContext context) {
+    var now = DateTime.now();
+    var formatter = DateFormat('dd-MMMM-yyyy-H:m:a');
+    String formattedDate = formatter.format(now);
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.cardTitle),
@@ -71,6 +78,10 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
                 child: TextField(
+                  onChanged: (value) {
+                    print('value $value gm');
+                    gmEaten = int.parse(value);
+                  },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(left: 10),
@@ -84,6 +95,10 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
                 child: TextField(
+                  onChanged: (value) {
+                    print("value $value kcal");
+                    kcalEaten = int.parse(value);
+                  },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(left: 10),
@@ -101,10 +116,8 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                 padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey)
-                  ),
-                  
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.grey)),
                   child: DropdownButton<String>(
                     value: valueChoosen,
                     onChanged: (newValue) {
@@ -130,7 +143,11 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      print('cardTitle ${widget.cardTitle}');
+                      print('${widget.cardTitle}');
+                      print(formattedDate);
+                      print("$kcalEaten");
+                      print('$gmEaten');
+                      print('$valueChoosen');
                     },
                     child: Text('Submit'),
                   ),
