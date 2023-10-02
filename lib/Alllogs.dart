@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/data/all_logs_card_item.dart';
 import 'package:flutter_application_1/record.dart';
 import 'package:intl/intl.dart';
 
@@ -13,8 +14,9 @@ class TanujallLogs extends StatefulWidget {
 }
 
 class _TanujallLogsState extends State<TanujallLogs> {
-  initState() {
-    super.initState();
+  List<AllLogsCardItems> dataforscreen = [];
+
+  getdatafromserver() {
     var db = FirebaseFirestore.instance;
     db.collection('Meals').snapshots().listen((value) {
       print('sucess ${value.docs.length} ${value.toString()}');
@@ -25,12 +27,12 @@ class _TanujallLogsState extends State<TanujallLogs> {
       print("line 26");
       print('${e}');
     });
+  }
 
-    // db.collection('Meals').count().get().then((value) {
-    //   print('${value.count}');
-    // });
+  initState() {
+    super.initState();
 
-    // print('${documents.}')
+    getdatafromserver();
   }
 
   @override

@@ -1,12 +1,12 @@
 import 'dart:ffi';
 
-class Food {
+class LogFood {
   Int calorie;
   Int gram;
   String mealName;
   String takenAt;
 
-  Food(
+  LogFood(
       {required this.gram,
       required this.calorie,
       required this.mealName,
