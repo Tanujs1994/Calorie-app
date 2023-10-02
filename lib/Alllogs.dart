@@ -15,17 +15,40 @@ class TanujallLogs extends StatefulWidget {
 
 class _TanujallLogsState extends State<TanujallLogs> {
   List<AllLogsCardItems> dataforscreen = [];
+  List<String> uniquedates = [];
 
   getdatafromserver() {
     var db = FirebaseFirestore.instance;
     db.collection('Meals').snapshots().listen((value) {
-      print('sucess ${value.docs.length} ${value.toString()}');
       for (var doc in value.docs) {
-        print('${doc.id} -> ${doc.data()}');
+        //print('${doc.id} -> ${doc.data()}');
+        uniquedates.add(doc.id);
       }
+      print('$uniquedates');
+      List<AllLogsCardItems> locallist = [];
+      for (var eachday in uniquedates) {
+        db.collection('Meals').doc(eachday).collection('Logs').get().then(
+          (querySnapshot) {
+            for (var docSnapshot in querySnapshot.docs) {
+              print('${docSnapshot.id} => ${docSnapshot.data()}');
+            }
+            locallist.add(
+              AllLogsCardItems(
+                breakfast: [],
+                lunch: [],
+                teabreak: [],
+                dinner: [],
+                date: eachday,
+              ),
+            );
+          },
+        );
+      }
+      setState(() {
+        dataforscreen = locallist;
+      });
     }, onError: (e) {
-      print("line 26");
-      print('${e}');
+      print('line 26 ${e}');
     });
   }
 
@@ -41,27 +64,23 @@ class _TanujallLogsState extends State<TanujallLogs> {
       padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
-          Text('Records',
-              style: TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.orangeAccent)),
+          Text(
+            'Records',
+            style: TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+                color: Colors.orangeAccent),
+          ),
           SizedBox(
             height: 10,
           ),
-          TanujCalorielLogCard(
-              Date: '22th Sept 2023',
-              EatenInBreakfast: 20,
-              EatenInLunch: (68),
-              EatenInDinner: (90)),
-          SizedBox(
-            height: 10,
-          ),
-          TanujCalorielLogCard(
-              Date: '23th Sept 2023',
-              EatenInBreakfast: 45,
-              EatenInLunch: 76,
-              EatenInDinner: 87),
+          Expanded(
+            child: ListView.builder(
+                itemCount: dataforscreen.length,
+                itemBuilder: (ctx, idx) {
+                  return Text(dataforscreen[idx].date);
+                }),
+          )
         ],
       ),
     );
