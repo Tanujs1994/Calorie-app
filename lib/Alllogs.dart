@@ -3,8 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/all_logs_card_item.dart';
-import 'package:flutter_application_1/record.dart';
-import 'package:intl/intl.dart';
 
 class TanujallLogs extends StatefulWidget {
   const TanujallLogs({super.key});
@@ -16,8 +14,9 @@ class TanujallLogs extends StatefulWidget {
 class _TanujallLogsState extends State<TanujallLogs> {
   List<AllLogsCardItems> dataforscreen = [];
   List<String> uniquedates = [];
+  
 
-  getdatafromserver() {
+  getdatafromserver() async {
     var db = FirebaseFirestore.instance;
     db.collection('Meals').snapshots().listen((value) {
       for (var doc in value.docs) {
@@ -27,7 +26,8 @@ class _TanujallLogsState extends State<TanujallLogs> {
       print('$uniquedates');
       List<AllLogsCardItems> locallist = [];
       for (var eachday in uniquedates) {
-        db.collection('Meals').doc(eachday).collection('Logs').get().then(
+         db.collection('Meals').doc(eachday).collection('Logs').get()
+         .then(
           (querySnapshot) {
             for (var docSnapshot in querySnapshot.docs) {
               print('${docSnapshot.id} => ${docSnapshot.data()}');

@@ -5,7 +5,7 @@ import 'package:flutter_application_1/Intropage.dart';
 
 void main() async {
   //  debugPaintSizeEnabled=true;
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
